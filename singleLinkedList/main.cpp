@@ -28,18 +28,17 @@
 Singly Linked List
 ==============================================
 Implementation of the linked list class
-- Stores 2 data points
-    :: Key ::
-    - Stored key (to be used by hash)
-    :: Value ::
-    - Stored data to be retreived
+- Use this via command line, by compiling and using a number of nodes as a command line argument
+
+ex: 
+./main 99
+(this then proceeds to build and print out all 1-99 nodes)
+
 */
 
 /* Preprocessing */
-#include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
-#include <vector>
 #include "singleLinked.h"
 
 using namespace std;

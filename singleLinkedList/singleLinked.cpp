@@ -34,10 +34,8 @@ Basics - Getting program working in one file...
 */
 
 /* Preprocessing */
-#include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
-#include <vector>
 #include "singleLinked.h"
 
 using namespace std;

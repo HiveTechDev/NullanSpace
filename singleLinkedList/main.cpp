@@ -28,7 +28,11 @@
 Singly Linked List
 ==============================================
 Implementation of the linked list class
-
+- Stores 2 data points
+    :: Key ::
+    - Stored key (to be used by hash)
+    :: Value ::
+    - Stored data to be retreived
 */
 
 /* Preprocessing */
@@ -42,24 +46,27 @@ using namespace std;
 
 int main(int argc, char const *argv[])
 {
-  SingleLinkList* linkList = new SingleLinkList();
-  int userInput = atoi(argv[1]);
-
-  for(int i = 1; i <= userInput; i++){
-      linkList->pushNode(i);
-  }
-
-    // Santiy check - Make sure items exist in list
-  if (linkList->getTotalNodes() > 0){
-    // Start at top of list (reset current)
-    // Save postion of current to go back to @ end (not nessisary...)
-    SingleLinkNode* tempCurrent = linkList->getCurrent();
-    linkList->setCurrent();
-      // If at least one exists, we go through loop to end
-      do {
-          cout << "Node is: " << linkList->getCurrent()->getNumber() << endl;
-          linkList->goNext();
-      } while(linkList->getCurrent() != NULL);
-      linkList->setCurrent(tempCurrent);
-  }
+    // If there is command a line argument for how many nodes
+    if(argc == 2){
+        SingleLinkList* linkList = new SingleLinkList();
+        int userInput = atoi(argv[1]);
+        
+        for(int i = 1; i <= userInput; i++){
+          linkList->pushNode(i);
+        }
+        
+        // Santiy check - Make sure items exist in list
+        if (linkList->getTotalNodes() > 0){
+        // Start at top of list (reset current)
+        // Save postion of current to go back to @ end (not nessisary...)
+        SingleLinkNode* tempCurrent = linkList->getCurrent();
+        linkList->setCurrent();
+          // If at least one exists, we go through loop to end
+          do {
+              cout << "Node is: " << linkList->getCurrent()->getNumber() << endl;
+              linkList->goNext();
+          } while(linkList->getCurrent() != NULL);
+          linkList->setCurrent(tempCurrent);
+        }
+    }
 }

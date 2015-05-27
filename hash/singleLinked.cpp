@@ -13,7 +13,7 @@
        \ \__\ \ \_______\ \_______\ \__\ \__\
         \|__|  \|_______|\|_______|\|__|\|__|                
         
-        Copyright Â© 2015 - Hive.Tech - Tyler McKay Hall
+        Copyright © 2015 - Hive.Tech - Tyler McKay Hall
             tyler@hive.technology
              www.hive.technology
 
@@ -28,28 +28,44 @@
 
 Singly Linked List
 ==============================================
-Header File for singly linked list
+Basics - Getting program working in one file...
+
 
 */
 
 /* Preprocessing */
 #include <stdlib.h>
 #include <iostream>
+#include <string>
 #include "singleLinked.h"
 
 using namespace std;
 
-
 SingleLinkNode::SingleLinkNode(){
-    number = -1;
+    key = "";
+    value = "";
+    next = NULL;
 };
 
-SingleLinkNode::SingleLinkNode(int numberIn){
-    number = numberIn;
+SingleLinkNode::SingleLinkNode(string keyIn, string valueIn){
+    key = keyIn;
+    value = valueIn;
 };
 
-int SingleLinkNode::getNumber(){
-    return number;
+string SingleLinkNode::getKey(){
+    return key;
+};
+
+string SingleLinkNode::getValue(){
+    return value;
+};
+
+void SingleLinkNode::setKey(string keyIn){
+    key = keyIn;
+};
+
+void SingleLinkNode::setValue(string valueIn){
+    value = valueIn;
 };
 
 SingleLinkNode* SingleLinkNode::getNext(){
@@ -59,7 +75,6 @@ SingleLinkNode* SingleLinkNode::getNext(){
 void SingleLinkNode::setNext(SingleLinkNode* pointerChange){
     next = pointerChange;
 };
-
 
 //Default Constrcutor
 SingleLinkList::SingleLinkList(){
@@ -77,7 +92,6 @@ SingleLinkList::SingleLinkList(SingleLinkNode* rootIn){
 int SingleLinkList::getTotalNodes(){
     return totalNodes;
 }
-
 
 SingleLinkNode* SingleLinkList::getRoot(){
     return root;
@@ -103,18 +117,20 @@ void SingleLinkList::setCurrent(SingleLinkNode* newCurrent){
 
 bool SingleLinkList::nextValid(){
     if(current->getNext() != NULL){return true;}
-    else { return false;}
+    else {return false;}
 }
 
 void SingleLinkList::goNext(){
     current = current->getNext();
 };
 
-void SingleLinkList::pushNode(int newData){
-    SingleLinkNode* tempNode = new SingleLinkNode(newData);
+// Push & Create with data
+void SingleLinkList::pushNode(string newKey, string newValue){
+    SingleLinkNode* tempNode = new SingleLinkNode(newKey, newValue);
     pushNode(tempNode);
 };
 
+// Push with existing node
 void SingleLinkList::pushNode(SingleLinkNode* newNode){
     
     // NONE in the list
